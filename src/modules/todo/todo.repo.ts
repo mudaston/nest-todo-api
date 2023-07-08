@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@app/database';
 
 import type { GetTodos } from './types';
+import type { CreateTodo } from './types';
 
 @Injectable()
 export class TodoRepo {
@@ -23,5 +24,13 @@ export class TodoRepo {
     });
 
     return todos;
+  }
+
+  async createTodo(params: CreateTodo) {
+    const { data } = params;
+
+    const todo = await this.orm.todo.create({ data });
+
+    return todo;
   }
 }
