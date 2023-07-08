@@ -2,8 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { PrismaService } from '@app/database';
 
-import type { GetTodos } from './types';
-import type { CreateTodo } from './types';
+import type { GetTodos, CreateTodo } from './types';
 
 @Injectable()
 export class TodoRepo {
