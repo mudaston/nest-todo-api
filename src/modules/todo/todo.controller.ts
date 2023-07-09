@@ -7,7 +7,7 @@ Controller('api');
 export class TodoController {
   constructor(private readonly service: TodoService) {}
 
-  @Get()
+  @Get('todos')
   async getTodos(@Query() dto: GetTodoDTO) {
     const { id, order } = dto;
 
