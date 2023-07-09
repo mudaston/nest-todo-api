@@ -3,7 +3,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { GetTodoDTO } from './todo.dto';
 
-Controller('api');
+@Controller('api')
 export class TodoController {
   constructor(private readonly service: TodoService) {}
 
