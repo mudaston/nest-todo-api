@@ -9,10 +9,11 @@ export class TodoRepo {
   constructor(private readonly orm: PrismaService) {}
 
   async getTodos(params: GetTodos) {
-    const { orderBy } = params;
+    const { id, orderBy } = params;
 
     const todos = await this.orm.todo.findMany({
       orderBy,
+      where: { id: { in: id } },
       select: {
         id: true,
         name: true,
