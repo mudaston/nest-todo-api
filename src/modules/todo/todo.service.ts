@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { TodoRepo } from './todo.repo';
 
-import type { GetTodos } from './types';
+import type { GetTodos, CreateTodo } from './types';
 
 @Injectable()
 export class TodoService {
@@ -12,5 +12,11 @@ export class TodoService {
     const todos = await this.repo.getTodos(params);
 
     return todos;
+  }
+
+  async createTodo(data: CreateTodo) {
+    const todo = await this.repo.createTodo(data);
+
+    return todo;
   }
 }
