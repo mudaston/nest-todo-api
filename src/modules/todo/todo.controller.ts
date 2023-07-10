@@ -1,7 +1,7 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 
 import { TodoService } from './todo.service';
-import { GetTodoDTO } from './todo.dto';
+import { GetTodoDTO, CreateTodoDTO } from './todo.dto';
 
 @Controller('api')
 export class TodoController {
@@ -14,5 +14,12 @@ export class TodoController {
     const todos = await this.service.getTodos({ orderBy: { id: order }, id });
 
     return todos;
+  }
+
+  @Post('todo')
+  async createTodo(@Body() dto: CreateTodoDTO) {
+    const todo = await this.service.createTodo({ data: dto });
+
+    return todo;
   }
 }

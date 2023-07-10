@@ -8,19 +8,10 @@ import {
   IsNumber,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
-import { Prisma } from '@prisma/client';
 
-interface IBaseDTO {
-  order: Prisma.SortOrder;
-}
+import { BaseDTO } from '@shared/dto/base-dto';
 
-export class GetTodoDTO {
-  order;
-
-  constructor(private readonly baseDTO: IBaseDTO) {
-    this.order = baseDTO.order;
-  }
-
+export class GetTodoDTO extends BaseDTO {
   @IsOptional()
   @IsArray()
   @Transform(({ value }) => value.trim().split(',').map(Number))

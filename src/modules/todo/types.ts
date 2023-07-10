@@ -6,5 +6,5 @@ export type GetTodos = {
 };
 
 export type CreateTodo = {
-  data: Prisma.TodoCreateInput;
+  data: Prisma.TodoUncheckedCreateInput;
 };
